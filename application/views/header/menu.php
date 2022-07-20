@@ -195,8 +195,8 @@
 					<a href="#">
 						<i class="fa fa-key"></i> <span>Autorizaciones</span>
 						<span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
+			              <i class="fa fa-angle-left pull-right"></i>
+			            </span>
 					</a>
 					<ul class="treeview-menu">
 						<li>
@@ -210,10 +210,23 @@
 				</li>
 				<li class="treeview">
 					<a href="#">
+						<i class="fa fa-key"></i> <span>Control de EPP</span>
+						<span class="pull-right-container">
+			              <i class="fa fa-angle-left pull-right"></i>
+			            </span>
+					</a>
+					<ul class="treeview-menu">
+						<li><a href="<?php echo base_url("index.php/salida")?>"><i class="fa fa-circle-o text-warning"></i> Crear EPP</a></li>
+						<li><a href="<?php echo base_url("index.php/articulosEpp")?>"><i class="fa fa-circle-o text-warning"></i> Artículos</a></li>
+						<li><a href="<?php echo base_url("index.php/reportesEpp")?>"><i class="fa fa-circle-o text-warning"></i> Reportes</a></li>
+					</ul>
+				</li>
+				<li class="treeview">
+					<a href="#">
 						<i class="fa fa-users"></i> <span>Usuarios</span>
 						<span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
+		              <i class="fa fa-angle-left pull-right"></i>
+		            </span>
 					</a>
 					<ul class="treeview-menu">
 						<li>

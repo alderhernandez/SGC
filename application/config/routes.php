@@ -237,3 +237,21 @@ $route["generarReporteDetallePeso"] = "Reportes_controller/generarReporteDetalle
 $route["generarReportePesoDiametro2"] = "Reportes_controller/generarReportePesoDiametro2";
 $route["reporteEnvases"] = "Reportes_controller/reporteEnvases";
 $route["GraficaEnvase"] = "Reportes_controller/GraficaEnvase";
+
+/**************gestion de epp**************/
+$route["salida"] = "Epp_controller/salida";
+$route["crearSalida/(:any)"] = "Epp_controller/crearSalida/$1";
+$route["getEmpleados"] = "epp_controller/getEmpleados";
+$route["crearSalida"] = "epp_controller/crearSalida";
+$route["guardarSalida"] = "epp_controller/guardarSalida";
+$route["editarSalida/(:any)"] = "epp_controller/editarSalida/$1";
+$route["actualizarSalida"] = "epp_controller/actualizarSalida";
+$route["BajaEPP"] = "epp_controller/BajaEPP";
+$route["mostrarEPP"] = "epp_controller/mostrarEPP";
+$route["articulosEpp"] = "epp_controller/articulosEpp";
+$route["getArticulosAjax"] = "epp_controller/getArticulosAjax";
+$route["editarArticulo/(:any)"] = "Epp_controller/editarArticulo/$1";
+$route["guardarEditarArticulo"] = "epp_controller/guardarEditarArticulo";
+$route["crearArticulo"] = "epp_controller/crearArticulo";
+$route["guardarCrearArticulo"] = "epp_controller/guardarCrearArticulo";
+$route["bajaArticulo"] = "epp_controller/bajaArticulo";
