@@ -114,6 +114,7 @@
                 articulo
                 ]).draw(false);
             $("#cantidad").val("");
+            $("#selectArticulos").val('').trigger('change')
         }
 
     });

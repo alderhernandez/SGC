@@ -132,6 +132,11 @@
     {
        location.href = "<?php echo base_url('index.php/editarSalida/') ?>"+id;
     }
+
+    function print(id)
+    {
+       location.href = "<?php echo base_url('index.php/printEpp/') ?>"+id;
+    }    
     
     $("#btnGuardar").click(function(){
         Swal.fire({
@@ -230,43 +235,6 @@
     });
 
 
-    $("#btnActualizar").click(function () {
-        if($("#maquina").val() == "" || $("#siglas").val() == ""){
-            Swal.fire({
-                text: "Todos los campos son requeridos",
-                type: "error",
-                allowOutsideClick: false
-            });
-        }else{
-            let tipo = '', mensaje = '';
-            let form_data = {
-                idmaquina: $("#idmaquina").val(),
-                maquina: $("#maquina").val(),
-                siglas: $("#siglas").val()
-            };
-            $.ajax({
-                url: "actualizarMaquina",
-                type: "POST",
-                data: form_data,
-                success: function (data) {
-                    let obj = jQuery.parseJSON(data);
-                    $.each(obj, function (i, index) {
-                        mensaje = index["mensaje"];
-                        tipo = index["tipo"];
-                    });
-                    Swal.fire({
-                        text: mensaje,
-                        type: tipo,
-                        allowOutsideClick: false
-                    }).then((result)=>{
-                        location.reload();
-                    });
-                }
-            });
-        }
-    });
-
-
     function Baja(id,estado)
     {
         let message = '', text = '';
@@ -330,6 +298,7 @@
                 d.fecha1 = $("#desde").val();
                 d.fecha2 = $("#hasta").val();                
                 d.tipo = $("#selectTipo option:selected").val();
+                d.empleado = $("#selectEmpleados option:selected").val();
             }
         },
         "processing": true,

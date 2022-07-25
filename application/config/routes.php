@@ -255,3 +255,5 @@ $route["guardarEditarArticulo"] = "epp_controller/guardarEditarArticulo";
 $route["crearArticulo"] = "epp_controller/crearArticulo";
 $route["guardarCrearArticulo"] = "epp_controller/guardarCrearArticulo";
 $route["bajaArticulo"] = "epp_controller/bajaArticulo";
+
+$route["printEpp/(:any)"] = "epp_controller/printEpp/$1";

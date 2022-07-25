@@ -161,8 +161,18 @@ class Epp_controller extends CI_Controller {
     	 $this->Epp_model->mostrarEPP(
             $this->input->post("tipo"),
             $this->input->post("desde"),
-            $this->input->post("hasta")
+            $this->input->post("hasta"),
+            $this->input->post("empleado")
         );
+    }
+
+
+    function printEpp($id)
+    {
+    	$data["enc"] = $this->Epp_model->getEncEpp($id);
+    	$data["det"] = $this->Epp_model->getDetEpp($id);
+    	//echo json_encode($data["det"]);
+    	$this->load->view('epp/printEpp',$data);
     }
 }
 ?>

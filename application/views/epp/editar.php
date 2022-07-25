@@ -99,8 +99,8 @@
 									echo "
 										<tr>
 											<td>".$key["Id"]."</td>
-											<td>".$key["IdArticulo"]."</td>											
-											<td>".$key["Descripcion"]."</td>";											
+											<td>".$key["IdArticulo"]."</td>
+											<td>".$key["Descripcion"]."</td>";
 									echo"</tr>";
 								}
 							}

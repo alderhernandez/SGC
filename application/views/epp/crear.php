@@ -39,10 +39,8 @@
 					</div>
 					<div class="col-xs-8 col-sm-6 col-md-6 col-lg-4">
 						<div class="form-group has-feedback">							
-							<label>Buscar empleado*</label>
-							<!--<select id="selectEmpleados"  class="form-control select2" style="width: 100%;">	-->
-								<select class="js-data-example-ajax form-control" id="selectEmpleados"></select>						
-							</select>
+							<label>Buscar empleado*</label>							
+							<select class="js-data-example-ajax form-control" id="selectEmpleados"></select>							
 						</div>
 					</div>					
 					<div class="col-xd-12 col-sm-3 col-md-6 col-lg-3">
@@ -52,7 +50,10 @@
 								<?php
 								if(!$articulos){
 								}else{
+									echo "
+										<option value=''>Seleccione un artículo</option>";
 									foreach ($articulos as $key) {
+										
 										echo "
 										<option value='".$key["Id"]."'>".$key["Descripcion"]."</option>
 										";

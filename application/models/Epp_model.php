@@ -36,7 +36,7 @@ class Epp_model extends CI_Model{
 
 
 		$query = "SELECT empID, firstName,lastName,middleName from SCGPL_EMPLEADOS_OHEM
-		WHERE 1 = 1 ".$qfilter."";
+		WHERE 1 = 1 and U_ESTADO = 1 ".$qfilter."";
 												//echo $query;return;
 		$resultado = $this->db2->query($query);
 
@@ -111,6 +111,8 @@ class Epp_model extends CI_Model{
 			"IdUsuarioEdita" =>$this->session->userdata("id"),
 			"FechaEdita" =>gmdate(date("Y-m-d H:i:s"))
 		);
+		
+
 		$baja = $this->db->update("Articulos_Epp",$data);
 		if($baja)
 		{
@@ -374,7 +376,7 @@ class Epp_model extends CI_Model{
 			echo json_encode($mensaje);
 		}
 	}
-	function mostrarEPP($tipo,$desde,$hasta)
+	function mostrarEPP($tipo,$desde,$hasta,$empleado)
 	{
 		$i = 0;
 
@@ -382,6 +384,10 @@ class Epp_model extends CI_Model{
 		$and = '';
 		if ($tipo !='') {
 			$and .= ' And t0.Tipo = '.$tipo;
+		}
+
+		if ($empleado !='') {
+			$and .= ' And t0.IdEmpleado = '.$empleado;
 		}
 
 		if ($desde !='' && $hasta !='') {
@@ -408,17 +414,23 @@ class Epp_model extends CI_Model{
 					<a onclick='Baja(".'"'.$value["Id"].'","'.$value["Estado"].'"'.")' class='btn btn-danger btn-xs' href='javascript:void(0)'>
 					<i class='fa fa-trash'></i>
 					</a>
+					<a onclick='print(".'"'.$value["Id"].'"'.")' class='btn btn-primary btn-xs' href='javascript:void(0)'>
+						<i class='fa fa-print'></i>
+					</a>
 					</td>";
 				break;
 				default:
 				$estado = "<span class='text-danger text-bold'>Inactivo</span>";
 				$boton = "
 					<td class='text-center'>
-					<a class='btn btn-primary btn-xs disabled' href='javascript:void(0)'>
+					<a onclick='editar(".'"'.$value["Id"].'"'.")' class='btn btn-primary btn-xs' href='javascript:void(0)'>
 					<i class='fa fa-eye'></i>
 					</a>
 					<a onclick='Baja(".'"'.$value["Id"].'","'.$value["Estado"].'"'.")' class='btn btn-danger btn-xs' href='javascript:void(0)'>
-					<i class='fa fa-undo' aria-hidden='true'></i> 	
+					<i class='fa fa-undo' aria-hidden='true'></i>
+					</a>
+					<a onclick='print(".'"'.$value["Id"].'"'.")' class='btn btn-primary btn-xs' href='javascript:void(0)'>
+						<i class='fa fa-print'></i>
 					</a>
 					</td>";
 				break;
@@ -440,6 +452,26 @@ class Epp_model extends CI_Model{
 			$i++;
 		}
 		echo json_encode($json);
+	}
+
+
+	function getEncEpp($id)
+	{
+		$query = "SELECT t0.*,t1.Nombres,t1.Apellidos from Tbl_Epp t0 
+					inner join Usuarios t1 on t1.IdUsuario = t0.IdUsuarioCrea
+					where Id= ".$id;
+
+		$data = $this->db->query($query);
+
+		return $data->result_array();
+	}
+
+	function getDetEpp($id)
+	{
+		
+		$data = $this->db->query("SELECT T0.*,T1.Descripcion AS ARTICULO FROM Det_Epp T0 INNER JOIN Articulos_Epp T1 ON T1.Id = T0.IdArticulo where t0.IdEpp = ".$id);
+		return $data->result_array();
+
 	}
 
 }
